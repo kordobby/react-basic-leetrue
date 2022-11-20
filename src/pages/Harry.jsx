@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import useRender from "../hooks/useRender";
 const Harry = () => {
   const houseElf = [1, 2, 3];
   const navigate = useNavigate();
+
+  useRender("Harry");
   return (
     <>
       <h1>This is Harry</h1>
