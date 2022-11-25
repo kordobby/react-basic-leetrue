@@ -11,18 +11,19 @@ const AlertModal = () => {
     useSelector((state) => state?.centerModal?.centerModal);
 
   return (
-    <>
+    <UI.StWrapper>
       <UI.AlertWrapper>
         <UI.AlertTitleWrapper>
           <span>{title}</span>
           <span>{subtitle}</span>
         </UI.AlertTitleWrapper>
         <UI.AlertBtnWrapper>
-          <UI.AlertBtnElem bgColor={`red`} onClick={onClick}>
+          <UI.AlertBtnElem bgColor={`black`} color={`white`} onClick={onClick}>
             {confirmBtnText}
           </UI.AlertBtnElem>
           <UI.AlertBtnElem
-            bgColor={`blue`}
+            color={`black`}
+            bgColor={`#D3D3D3`}
             onClick={() => {
               dispatch(closeAlert());
             }}
@@ -31,7 +32,7 @@ const AlertModal = () => {
           </UI.AlertBtnElem>
         </UI.AlertBtnWrapper>
       </UI.AlertWrapper>
-    </>
+    </UI.StWrapper>
   );
 };
 

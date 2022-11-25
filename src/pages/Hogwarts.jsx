@@ -23,8 +23,8 @@ const Hogwarts = () => {
                 open: true,
                 title: "해리에게 가겠니?",
                 subtitle: "돌아오는 건 포트키를 사용해",
-                confirmBtnText: "취소",
-                cancelBtnText: "확인",
+                confirmBtnText: "확인",
+                cancelBtnText: "취소",
                 onClick: () => {
                   goToHarryHandler();
                   dispatch(closeAlert());
@@ -42,6 +42,13 @@ const Hogwarts = () => {
         }}
       >
         Ron
+      </button>
+      <button
+        onClick={() => {
+          navigate("/chamber");
+        }}
+      >
+        비밀의 방
       </button>
     </>
   );
