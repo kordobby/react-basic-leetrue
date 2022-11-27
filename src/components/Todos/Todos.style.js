@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.form`
   background-color: #eeeeee;
-  width: 1000px;
+  width: 100%;
   height: 100px;
 
   display: flex;
@@ -40,7 +40,7 @@ export const StInputLabel = styled.div`
 `;
 
 export const InputButton = styled.button`
-  background-color: blue;
+  background-color: black;
   border-radius: 12px;
 
   color: white;
@@ -68,14 +68,14 @@ export const StCardsWrapper = styled.div`
 `;
 
 export const TodoCardWrapper = styled.div`
-  border: 3px solid blue;
+  border: 3px solid #eee;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 20px;
   width: 300px;
-
+  margin-right: 20px;
   h1 {
     font-size: 20px;
     font-weight: 600;
@@ -92,7 +92,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const CardButton = styled.div`
-  background-color: ${({ bgColor }) => (bgColor ? `${bgColor}` : "white")};
+  background-color: ${({ del }) => (del ? `#eeeeee` : "black")};
+  color: ${({ del }) => (del ? `black` : "white")};
   width: 100px;
   padding: 5px;
   border-radius: 5px;

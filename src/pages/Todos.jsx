@@ -31,13 +31,11 @@ const Todos = () => {
       <Header todoList={todoList} setTodoList={setTodoList} />
       <TodoList
         cardList={todoList}
-        title={`Working..`}
         deleteHandler={deleteHandler}
         updateHandler={updateHandler}
       />
       <TodoList
         cardList={todoList}
-        title={`Done..!`}
         deleteHandler={deleteHandler}
         updateHandler={updateHandler}
         isDone={true}

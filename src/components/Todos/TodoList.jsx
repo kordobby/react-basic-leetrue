@@ -1,15 +1,9 @@
 import TodoCards from "./TodoCards";
 import { ListWrapper, ListTitle, StCardsWrapper } from "./Todos.style";
-const TodoList = ({
-  isDone,
-  title,
-  deleteHandler,
-  updateHandler,
-  cardList,
-}) => {
+const TodoList = ({ isDone, deleteHandler, updateHandler, cardList }) => {
   return (
     <ListWrapper>
-      <ListTitle>{title}</ListTitle>
+      <ListTitle>{isDone ? "Done..!" : "Working..."}</ListTitle>
       {isDone ? (
         <StCardsWrapper>
           {cardList?.map((value, index) => {

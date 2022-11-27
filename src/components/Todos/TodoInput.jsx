@@ -1,6 +1,6 @@
 import { StInput, StInputWrapper, StInputLabel } from "./Todos.style";
 
-const TodoInput = ({ title, func }) => {
+const TodoInput = ({ title, func, text }) => {
   const onChangeHandler = (event) => {
     const value = event?.target?.value;
     func((prev) => value);
@@ -11,7 +11,7 @@ const TodoInput = ({ title, func }) => {
       <StInputLabel>
         <span>{title}</span>
       </StInputLabel>
-      <StInput onChange={onChangeHandler}></StInput>
+      <StInput value={text} onChange={onChangeHandler}></StInput>
     </StInputWrapper>
   );
 };

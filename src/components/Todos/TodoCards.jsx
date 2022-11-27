@@ -11,6 +11,7 @@ const TodoCards = ({ isDone, updateHandler, deleteHandler, value }) => {
           onClick={deleteHandler}
           bgColor={`red`}
           value={value}
+          del
         >
           삭제하기
         </CardButton>
