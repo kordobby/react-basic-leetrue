@@ -2,6 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { closeAlert, openAlert } from "../redux/modules/centerModal";
+import CategoryBox from "../components/CategoryBox";
+import CategoryInput from "../components/CategoryBox/CategoryInput";
+
 const Hogwarts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,6 +53,16 @@ const Hogwarts = () => {
       >
         비밀의 방
       </button>
+      <button
+        onClick={() => {
+          navigate("/todos");
+        }}
+      >
+        투두리스트
+      </button>
+      {/* <CategoryBox title={`프로젝트 제목`}>
+        <CategoryInput />
+      </CategoryBox> */}
     </>
   );
 };

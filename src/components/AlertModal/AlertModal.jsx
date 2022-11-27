@@ -14,16 +14,20 @@ const AlertModal = () => {
     <UI.StWrapper>
       <UI.AlertWrapper>
         <UI.AlertTitleWrapper>
-          <span>{title}</span>
+          <UI.AlertTitle>{title}</UI.AlertTitle>
           <span>{subtitle}</span>
         </UI.AlertTitleWrapper>
         <UI.AlertBtnWrapper>
-          <UI.AlertBtnElem bgColor={`black`} color={`white`} onClick={onClick}>
-            {confirmBtnText}
-          </UI.AlertBtnElem>
           <UI.AlertBtnElem
             color={`black`}
             bgColor={`#D3D3D3`}
+            onClick={onClick}
+          >
+            {confirmBtnText}
+          </UI.AlertBtnElem>
+          <UI.AlertBtnElem
+            bgColor={`black`}
+            color={`white`}
             onClick={() => {
               dispatch(closeAlert());
             }}

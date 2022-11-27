@@ -5,16 +5,19 @@ import Ron from "../pages/Ron";
 import Hogwarts from "../pages/Hogwarts";
 import Dobby from "../pages/Dobby";
 import ChamberOfSecrete from "../pages/ChamerOfSecrete";
+import Todos from "../pages/Todos";
+
 // Route 설정 뼈대 잡기
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Hogwarts />} />
+        <Route path="/" element={<Hogwarts />} />
         <Route path="/harry" element={<Harry />} />
         <Route path="/ron" element={<Ron />} />
         <Route path="/dobby/:id" element={<Dobby />} />
         <Route path="/chamber" element={<ChamberOfSecrete />} />
+        <Route path="/todos" element={<Todos/>} />
       </Routes>
     </BrowserRouter>
   );
