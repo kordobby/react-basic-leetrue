@@ -1,10 +1,14 @@
 import { HeaderWrapper } from "./Todos.style";
 import TodoInput from "./TodoInput";
 import { InputButton } from "./Todos.style";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useRef } from "react";
+import { closeAlert, openAlert } from "../../redux/modules/centerModal";
 
 const Header = ({ todoList, setTodoList }) => {
+  const dispatch = useDispatch();
+
   const [todoTitle, setTodoTitle] = useState("");
   const [todoContent, setTodoContent] = useState("");
   const inputRef = useRef();
@@ -12,7 +16,22 @@ const Header = ({ todoList, setTodoList }) => {
     // func
     event.preventDefault();
     if (todoTitle === "" || todoContent === "") {
-      alert("빈칸을 모두 입력해주세요!");
+      dispatch(
+        openAlert({
+          centerModal: {
+            open: true,
+            title: "오류!",
+            subtitle: "빈 칸을 모두 채워주세요!",
+            confirmBtnText: "싫은뎅!",
+            cancelBtnText: "좋아요!",
+            onClick: () => {
+              setTodoTitle("");
+              setTodoContent("");
+              dispatch(closeAlert());
+            },
+          },
+        })
+      );
       return;
     }
     const newTodo = {

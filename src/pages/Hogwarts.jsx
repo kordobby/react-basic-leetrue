@@ -53,9 +53,16 @@ const Hogwarts = () => {
       >
         비밀의 방
       </button>
-      <CategoryBox title={`프로젝트 제목`}>
+      <button
+        onClick={() => {
+          navigate("/todos");
+        }}
+      >
+        투두리스트
+      </button>
+      {/* <CategoryBox title={`프로젝트 제목`}>
         <CategoryInput />
-      </CategoryBox>
+      </CategoryBox> */}
     </>
   );
 };
