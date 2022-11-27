@@ -5,6 +5,7 @@ import styled from "styled-components";
 const ChamberOfSecrete = () => {
   const [elfCount, setElfCount] = useState(1);
   const [elfHouse, setElfHouse] = useState([]);
+
   const elfHell = () => {
     const moreElf = elfCount * 2;
     setElfCount(moreElf);
@@ -18,7 +19,6 @@ const ChamberOfSecrete = () => {
       <button onClick={elfHell}>경고 :: 누르지마시오</button>
       <ElfContainer>
         {elfHouse.map((value, index) => {
-          console.log(value);
           return <ElfImage src={elf} alt="elf" key={`elf-${index}`} />;
         })}
       </ElfContainer>
