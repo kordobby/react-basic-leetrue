@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { closeAlert, openAlert } from "../redux/modules/centerModal";
@@ -12,12 +12,24 @@ const Hogwarts = () => {
   const goToHarryHandler = () => {
     navigate("/harry");
   };
+  const [count, setCount] = useState(0);
+  const [countTwo, setCountTwo] = useState(0);
 
+  useEffect(() => {
+    console.log("카운트가 바뀌고 있어."); // 딱 한번만 불리겠죠?
+    return console.log("화면이 무너지고있어.");
+  }, []); // 디펜던시 : 의존성 배열 값을 안넣으면
+
+  console.log("no Effect");
   return (
     <>
       <div>
         <h1>Welcome</h1>
+        <button onClick={() => setCount(count + 1)}>ㅋ카운터</button>
+        <button onClick={() => setCountTwo(countTwo + 1)}>ㅋ카운터2</button>
       </div>
+      <h1>{count}</h1>
+      <h1>{countTwo}</h1>
       <button
         onClick={() => {
           dispatch(

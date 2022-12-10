@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dobby from "../assets/images/dobby.jpeg";
 import styled from "styled-components";
+const dobbyData = require("../shared/dobby.json");
 
 const Dobby = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const data = dobbyData.filter((value) => value.id === Number(id));
+    if (data.length === 0) {
+      navigate("/");
+      return;
+    }
+  }, []);
 
   return (
     <>
