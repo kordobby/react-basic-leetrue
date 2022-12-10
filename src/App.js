@@ -1,10 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Router from "./shared/Router";
-console.log("asdfasdfadsf");
+import AlertModal from "./components/AlertModal/AlertModal";
+import { useSelector } from "react-redux";
+
 function App() {
+  const { open } = useSelector((state) => state?.centerModal?.centerModal);
+
   return (
     <div className="App">
+      {open && <AlertModal />}
       <Router />
     </div>
   );
