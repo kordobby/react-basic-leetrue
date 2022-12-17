@@ -8,7 +8,9 @@ import ChamberOfSecrete from "../pages/ChamerOfSecrete";
 import Todos from "../pages/Todos";
 import Form from "../pages/Form";
 import TodoList from "../pages/TodoList";
+import NewTodo from "../pages/NewTodo";
 // Route 설정 뼈대 잡기
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -22,6 +24,7 @@ const Router = () => {
         <Route path="/todos" element={<Todos />} />
         <Route path="/*" element={<Todos />}></Route>
         <Route path="/prac" element={<TodoList />}></Route>
+        <Route path="/newtodo" element={<NewTodo />}></Route>
       </Routes>
     </BrowserRouter>
   );
