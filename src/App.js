@@ -8,6 +8,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>여기는 앱이야</h1>
       {open && <AlertModal />}
       <Router />
     </div>
