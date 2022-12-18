@@ -1,37 +1,51 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 
-const useValidation = (type) => {
-  const [inputValue, setInputValue] = useState("");
-  const [isValid, setIsValid] = useState(false);
+const useSignUp = () => {
+  // signup 에서 사용하는 상태값
+  const [joinData, setJoinData] = useState({
+    id: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  const validateCheck = useCallback(
-    (e) => {
+  // signup 에서 사용하는 상태값
+  const onChangeHandler = useCallback(
+    (e, type) => {
       const value = e.target.value;
-      setInputValue(value);
       switch (type) {
         case "email":
-          if (value.length > 9 && value !== "") {
-            setIsValid(true);
-          } else {
-            setIsValid(false);
-          }
+          setJoinData({ ...joinData, ["id"]: value });
           return;
         case "phone":
           return;
         case "password":
-          if (value.length > 4 && value !== "") {
-            setIsValid(true);
-          } else {
-            setIsValid(false);
-          }
+          setJoinData({ ...joinData, ["password"]: value });
           return;
+        case "confirmPassword":
+          setJoinData({ ...joinData, ["confirmPassword"]: value });
         default:
           return;
       }
     },
-    [inputValue]
+    [joinData]
   );
-  return [inputValue, isValid, validateCheck];
+
+  // validation
+  const validation = useMemo(() => {
+    if (joinData.password !== joinData.confirmPassword) {
+      return false;
+    } else if (joinData.id.length < 4) {
+      return false;
+    } else if (joinData.password.length < 4) {
+      return false;
+    } else if (joinData.confirmPassword.length < 4) {
+      return false;
+    } else {
+      return true;
+    }
+  }, [joinData]);
+
+  return [joinData, validation, onChangeHandler];
 };
 
-export default useValidation;
+export default useSignUp;

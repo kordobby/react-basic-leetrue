@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import useValidation from "../hooks/useValidation";
+import useSignUp from "../hooks/useValidation";
 
 const Compound = () => {
-  const [value, setValue] = useState({
-    value: "",
-    label: "",
-  });
-  const [password, passwordCheck, setPassword] = useValidation("password");
-  const [email, emailCheck, setEmail] = useValidation("email");
-
+  const [input, validation, setInput] = useSignUp();
+  console.log(input);
   // select tag
   /*
   autofocus:Specifies that the drop-down list should automatically get focus when the page loads,
@@ -47,13 +42,44 @@ const Compound = () => {
           </option>
         </optgroup>
       </Select> */}
-      <input type="text" onChange={setEmail}></input>
-      <input type="text" onChange={setPassword}></input>
-      <button disabled={!passwordCheck || !emailCheck}>제출</button>
+      <div>
+        <label>아이디</label>
+        <input
+          type="text"
+          onChange={(e) => {
+            setInput(e, "email");
+          }}
+        ></input>
+      </div>
+      <div>
+        <label>비밀번호</label>
+        <input
+          type="text"
+          onChange={(e) => {
+            setInput(e, "password");
+          }}
+        ></input>
+      </div>
+      <div>
+        <label>비밀번호 확인</label>
+        <input
+          type="text"
+          onChange={(e) => {
+            setInput(e, "confirmPassword");
+          }}
+        ></input>
+      </div>
+      {validation && <p>유효성검사 통과</p>}
+      <Button disabled={!validation}>제출</Button>
     </>
   );
 };
 
 const Select = styled.select``;
-
+const Button = styled.button`
+  width: 100px;
+  height: 50px;
+  background-color: ${({ disabled }) => (disabled ? "gray" : "yellow")};
+  color: ${({ disabled }) => (disabled ? "red" : "blue")};
+`;
 export default Compound;
