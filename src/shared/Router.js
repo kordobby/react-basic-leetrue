@@ -11,6 +11,7 @@ import TodoList from "../pages/TodoList";
 import NewTodo from "../pages/NewTodo";
 import Login from "../pages/Login";
 import Compound from "../pages/Compound";
+import Canvas from "../pages/Canvas";
 // Route 설정 뼈대 잡기
 
 const Router = () => {
@@ -29,6 +30,7 @@ const Router = () => {
         <Route path="/newtodo" element={<NewTodo />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/compound" element={<Compound />}></Route>
+        <Route path="/canvas" element={<Canvas />}></Route>
       </Routes>
     </BrowserRouter>
   );
