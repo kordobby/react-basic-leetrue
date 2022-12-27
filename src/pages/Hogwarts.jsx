@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { closeAlert, openAlert } from "../redux/modules/centerModal";
 import CategoryBox from "../components/CategoryBox";
 import CategoryInput from "../components/CategoryBox/CategoryInput";
-
+import styled from "styled-components";
+import Hide from "../components/Hide";
 const Hogwarts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -14,19 +15,39 @@ const Hogwarts = () => {
   };
   const [count, setCount] = useState(0);
   const [countTwo, setCountTwo] = useState(0);
+  const [hide, setHide] = useState(false);
+  // dispatch, 첫 데이터 가져오기 (한번만 실행되면 좋겠다.)
+  // useEffect(() => {}, []);
 
-  useEffect(() => {
-    console.log("카운트가 바뀌고 있어."); // 딱 한번만 불리겠죠?
-    return console.log("화면이 무너지고있어.");
-  }, []); // 디펜던시 : 의존성 배열 값을 안넣으면
+  // title, contents, 리렌더링이 필요한 부분
+  // useEffect(() => {
+  //   console.log("처음 한번만 실행시켜줘, 의존성 배열 비어있음");
+  //   // dispatch(__getPost(id));
+  // }, []);
 
-  console.log("no Effect");
+  const cleanUpFunc = () => {
+    console.log("화면이 무너지고있어.");
+    setCountTwo(9);
+  };
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
   return (
     <>
+      {hide && <Hide></Hide>}
+      {modal && (
+        <Modal>
+          <h1>모달닫기</h1>
+          <button onClick={() => setHide(!hide)}>모달닫기</button>
+        </Modal>
+      )}
       <div>
         <h1>Welcome</h1>
-        <button onClick={() => setCount(count + 1)}>ㅋ카운터</button>
-        <button onClick={() => setCountTwo(countTwo + 1)}>ㅋ카운터2</button>
+        {/* <button onClick={() => setCount(count + 1)}>ㅋ카운터</button>
+        <button onClick={() => setCountTwo(countTwo + 1)}>ㅋ카운터2</button> */}
+        <button onClick={() => setHide(!hide)}>모달 열기</button>
       </div>
       <h1>{count}</h1>
       <h1>{countTwo}</h1>
@@ -78,5 +99,21 @@ const Hogwarts = () => {
     </>
   );
 };
+
+const Modal = styled.div`
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  width: 300px;
+  height: 300px;
+  background-color: yellow;
+
+  button {
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    color: white;
+  }
+`;
 
 export default Hogwarts;

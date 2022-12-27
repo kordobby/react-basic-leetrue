@@ -72,7 +72,6 @@ const Canvas = () => {
     for (let value of formData.values()) {
       console.log(value);
     }
-    console.log(JSON.stringify(formData));
   };
 
   return (
